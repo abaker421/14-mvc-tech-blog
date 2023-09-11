@@ -5,11 +5,21 @@ class Post extends Model {}
 
 Post.init({
 
-id: {},
-title: {},
-content: {},
-authorId: {},
-dateCreated: {}
+id: {
+    type:DataTypes
+},
+title: {
+    type:DataTypes
+},
+content: {
+    type:DataTypes
+},
+authorId: {
+    type:DataTypes
+},
+dateCreated: {
+    type:DataTypes
+}
 },
 {
     hooks: {},
