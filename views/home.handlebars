@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Welcome to our Blog Post!</h1>
+  <ul>
+    {{#each posts}}
+      <li>
+        <a href="/posts/{{id}}">
+          {{name}}
+        </a>
+      </li>
+    {{/each}}
+  </ul>
+</div>
