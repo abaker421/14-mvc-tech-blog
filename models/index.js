@@ -2,11 +2,11 @@ const User = require('./User.js')
 const Post = require('./Post.js')
 
 User.hasMany(Post, {
-    foreignKey: ''
+    foreignKey: 'authorId'
 })
 
 Post.belongsTo(User, {
-    foreignKey: ''
+    foreignKey: 'userPosts'
 })
 
 module.exports= { User, Post }

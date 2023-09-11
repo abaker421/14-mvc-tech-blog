@@ -1,6 +1,6 @@
-const {Model, DataTypes} = require('sequelize')
+const { Model, DataTypes } = require('sequelize')
 const sequelize = require('../config/connection')
-const bcrypt= require('bcrypt')
+const bcrypt = require('bcrypt')
 
 class User extends Model {
     checkPassword(loginPw) {
@@ -9,55 +9,55 @@ class User extends Model {
 }
 
 User.init({
-    id:{
-        type:DataTypes.INTEGER,
+    id: {
+        type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
     },
     name: {
-        type:DataTypes.STRING,
+        type: DataTypes.STRING,
         allowNull: false
     },
     email: {
-        type:DataTypes.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         unique: true,
-        validate:{
+        validate: {
             isEmail: true
         }
     },
     password: {
-        type:DataTypes.STRING,
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
             len: [8]
         }
     },
     userPosts: {
-        type:DataTypes.ARRAY(DataTypes.INTEGER),
+        type: DataTypes.ARRAY(DataTypes.INTEGER),
         references: {
             model: 'post',
             ker: 'id'
         }
     }
 },
-{
-    hooks: {
-        beforeValidate: async (userData) => {
-            userData.password = await bcrypt.hash(userData.password, 10)
-            return userData
+    {
+        hooks: {
+            beforeValidate: async (userData) => {
+                userData.password = await bcrypt.hash(userData.password, 10)
+                return userData
+            },
+            beforeUpdate: async (userData) => {
+                userData.password = await bcrypt.hash(userData.password, 10)
+                return userData
+            }
         },
-        beforeUpdate: async (userData) => {
-            userData.password = await bcrypt.hash(userData.password, 10)
-            return userData
-        }
-    },
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'user'
-})
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'user'
+    })
 
-module.exports= User
+module.exports = User
