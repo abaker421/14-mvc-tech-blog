@@ -35,7 +35,11 @@ User.init({
         }
     },
     userPosts: {
-        type:DataTypes
+        type:DataTypes.ARRAY(DataTypes.INTEGER),
+        references: {
+            model: 'post',
+            ker: 'id'
+        }
     }
 },
 {

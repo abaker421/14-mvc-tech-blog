@@ -5,24 +5,43 @@ class Post extends Model {}
 
 Post.init({
 
-id: {
-    type:DataTypes
-},
+    id:{
+        type:DataTypes.INTEGER,
+        primaryKey: true,
+        autoIncrement: true,
+        allowNull: false
+    },
 title: {
-    type:DataTypes
+    type:DataTypes.STRING,
+    allowNull: false,
+
 },
 content: {
-    type:DataTypes
+    type:DataTypes.TEXT('medium'),
+    allowNull: false,
 },
 authorId: {
-    type:DataTypes
+    type:DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+        model: 'user',
+        key: 'id'
+    }
 },
 dateCreated: {
-    type:DataTypes
+    type: DataTypes.DATE,
+    allowNull: false,
+    defaultValue: DataTypes.NOW,
 }
 },
 {
-    hooks: {},
+    hooks: {
+        beforeCreate: async (post) => {
+            const shortName = await post.name.split(' ').join('-').toLowerCase()
+            post.shortName= shortName
+            return post
+        }
+    },
     sequelize,
     timestamps: true,
     freezeTableName: true,
