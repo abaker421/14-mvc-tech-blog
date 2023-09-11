@@ -1,0 +1,30 @@
+[
+    {
+        "id": 1,
+        "title": "Post 1",
+        "content": "This is Post 1",
+        "authorId": 1,
+        "dateCreated": "1/1/11"
+    },
+    {
+        "id": 2,
+        "title": "Post 2",
+        "content": "This is Post 2",
+        "authorId": 1,
+        "dateCreated": "2/11/15"
+    },
+    {
+        "id": 3,
+        "title": "Post 3",
+        "content": "This is Post 3",
+        "authorId": 2,
+        "dateCreated": "3/24/16"
+    },
+    {
+        "id": 4,
+        "title": "Post 4",
+        "content": "this is Post 4",
+        "authorId": 3,
+        "dateCreated": "3/25/16"
+    }
+]

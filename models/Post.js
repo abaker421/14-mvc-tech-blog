@@ -10,17 +10,17 @@ Post.init({
         primaryKey: true,
         autoIncrement: true,
         allowNull: false
-    },
-title: {
+},
+    title: {
     type:DataTypes.STRING,
     allowNull: false,
 
 },
-content: {
+    content: {
     type:DataTypes.TEXT('medium'),
     allowNull: false,
 },
-authorId: {
+    authorId: {
     type:DataTypes.INTEGER,
     allowNull: false,
     references: {
@@ -28,7 +28,7 @@ authorId: {
         key: 'id'
     }
 },
-dateCreated: {
+    dateCreated: {
     type: DataTypes.DATE,
     allowNull: false,
     defaultValue: DataTypes.NOW,
@@ -39,6 +39,12 @@ dateCreated: {
         beforeCreate: async (post) => {
             const shortName = await post.name.split(' ').join('-').toLowerCase()
             post.shortName= shortName
+            return post
+        },
+            beforeCreate: async (post) => {
+            const date = post.dataValues.dateCreated
+            const newDate = new Date(date).toLocaleDateString()
+            date = newDate
             return post
         }
     },
