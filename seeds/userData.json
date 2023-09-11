@@ -1,0 +1,23 @@
+[
+    {
+        "id": 1,
+        "name": "Jim Pickens",
+        "email": "jim@gmail.com",
+        "password": "guest",
+        "userPosts": [1,2]
+    },
+    {
+        "id": 2,
+        "name": "Reannu Keeves",
+        "email": "reannu@hotmail.com",
+        "password": "neo123",
+        "userPosts": [3]
+    },
+    {
+        "id": 3,
+        "name": "Arin Hansen",
+        "email": "gg@gmail.com",
+        "password": "grump1",
+        "userPosts": [4]
+    }
+]
